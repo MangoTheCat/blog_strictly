@@ -1,0 +1,9 @@
+language: r
+sudo: false
+cache: packages
+
+r:
+ - release
+
+script:
+  - R -e "rmarkdown::render('README.Rmd')"
