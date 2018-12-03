@@ -15,13 +15,16 @@ hides a multitude of sins. You sort of jump about a bit, do something
 called “swivel”, and fall over at the end. Then you get a minimum 35.
 Job done.
 
-My family disagree, so I’ve set about to test my hypothesis with R. In
-fact no more than you’d find in an [intro to R
+My family disagree, so I’ve set about to test my hypothesis. The great
+news is that this is really easy to do with R. In fact, this whole post
+uses no more R than you’d find in an [introduction to R
 course](https://www.mango-solutions.com/additional-solutions/r-training).
-They can’t wait to find out the results. Wherever they went.
+My family can’t wait to find out the results. Wherever they went.
 
-Base R has everything we need but we’ll get there quicker with the
-tidyverse.
+For the rest of this post you can relive with me how I tested out my
+idea and finally put this to rest. Base R has everything we need but
+we’ll get there quicker with the
+[tidyverse](https://www.tidyverse.org/).
 
 ``` r
 library(tidyverse) # I've set message=FALSE everywhere
@@ -59,12 +62,12 @@ head(dances)
     ## # A tibble: 6 x 15
     ##   Couple Dance Song  Series  Week Order Craig Arlene   Len Bruno Alesha
     ##   <chr>  <chr> <chr>  <int> <int> <int> <int>  <int> <int> <int>  <int>
-    ## 1 Natas… Cha … Chai…      1     1     1     5      7     8     7     NA
-    ## 2 Lesle… Waltz He W…      1     1     2     6      8     8     7     NA
-    ## 3 Chris… Cha … Lady…      1     1     3     4      4     7     4     NA
-    ## 4 Jason… Waltz Thre…      1     1     4     5      5     6     5     NA
-    ## 5 Veron… Cha … R.E.…      1     1     5     7      6     7     7     NA
-    ## 6 Clair… Waltz Unch…      1     1     6     7      7     8     5     NA
+    ## 1 Natas~ Cha ~ Chai~      1     1     1     5      7     8     7     NA
+    ## 2 Lesle~ Waltz He W~      1     1     2     6      8     8     7     NA
+    ## 3 Chris~ Cha ~ Lady~      1     1     3     4      4     7     4     NA
+    ## 4 Jason~ Waltz Thre~      1     1     4     5      5     6     5     NA
+    ## 5 Veron~ Cha ~ R.E.~      1     1     5     7      6     7     7     NA
+    ## 6 Clair~ Waltz Unch~      1     1     6     7      7     8     5     NA
     ## # ... with 4 more variables: Darcey <int>, Jennifer <int>, Donny <int>,
     ## #   Total <int>
 
@@ -254,9 +257,11 @@ stopper”](https://www.ultimatestrictly.com/cha-cha-cha/).
 
 Unfortunately it looks like the evidence doesn’t support my hypothesis
 that the Charleston is more favourably marked. Maybe all that swivelling
-is harder than it looks. What we did find is that the Cha Cha Cha might
-score lower. Although that’s most likely because it’s seen as an easier
-dance for. Well. People like
+is harder than it looks. Faye and Giovanni did undeniably do an
+excellent job with their, perfect scoring, [Sound of Music
+Charleston](https://youtu.be/55z6IrL8k0Q). What we did find is that the
+Cha Cha Cha might score lower. Although that’s most likely because it’s
+seen as an easier dance for. Well. People like
 Quentin.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Da_zxblfGoI?start=126" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -267,3 +272,11 @@ I’m sorry Quentin. I would fare no better.
 
 Well seeing as I’m wrong, and everyone else is asleep. Let’s just
 pretend this never happened.
+
+## Extras
+
+Download the [code for this blog post on
+GitHub](https://github.com/mangothecat/blog_strictly). I’ve setup the
+repository to run automated builds, [just like you would for a
+package](https://juliasilge.com/blog/beginners-guide-to-travis/). This
+way I can track dependencies, and find out quickly if anything breaks.
