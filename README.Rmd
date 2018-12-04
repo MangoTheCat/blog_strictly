@@ -30,22 +30,30 @@ With the URL all we need are a couple of tweaks to the default `read_csv` to acc
 ```{r data, cache=TRUE}
 url <- "https://www.ultimatestrictly.com/s/SCD-Results-S14.csv"
 raw_results <- read_csv(file = url, na = c("-"), guess_max = 10000)
+
+head(raw_results) %>%
+  knitr::kable() # pretty markdown tables
 ```
 
-Let's start with a little light cleaning. The formatting on the dances is a bit inconsistent. Most of it can be fixed by forcing the dance names to be a consistent case. I like the look of title case so we'll use stringr's `str_to_title`.
+So you see we get every dance, for every week in every series, and individual judges scores as well as the total score. 
+
+Let's start with a little light cleaning. The formatting on the dances is a bit inconsistent. For example we have `Cha cha cha` and `Cha Cha Cha`. Most of it can be fixed by forcing the dance names to be a consistent case. I like the look of title case so we'll use stringr's `str_to_title`.
 
 ```{r cleaning}
 dances <- raw_results %>%
   mutate(Dance = str_to_title(Dance))
 
-head(dances)
+dances %>%
+  select(Dance) %>%
+  head() %>%
+  knitr::kable()
 ```
 
-So you see we get every dance, and individual judges scores as well as the total score. My next step would usually be to [gather](https://tidyr.tidyverse.org/reference/gather.html) this into a tidy long data frame, maybe [separate](https://tidyr.tidyverse.org/reference/separate.html) the couples into celebrity and professional. But in this instance we only want the Dance and the Total, so we'll leave it like it is.
+My next step would usually be to [gather](https://tidyr.tidyverse.org/reference/gather.html) this into a tidy long data frame, maybe [separate](https://tidyr.tidyverse.org/reference/separate.html) the couples into celebrity and professional. But in this instance we only want the Dance and the Total, so we'll leave it like it is.
 
 ## Top Dances
 
-I'd like to know which dances get the best `Total` score. We can do this with a `group_by`-`summarise` combination.
+I'd like to know which dances get the best `Total` score. We can do this with a `group_by`, `summarise` combination.
 
 ```{r topdances1}
 dances %>%

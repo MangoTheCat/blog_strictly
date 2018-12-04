@@ -45,34 +45,49 @@ columns that guess the data type incorrectly.
 ``` r
 url <- "https://www.ultimatestrictly.com/s/SCD-Results-S14.csv"
 raw_results <- read_csv(file = url, na = c("-"), guess_max = 10000)
+
+head(raw_results) %>%
+  knitr::kable() # pretty markdown tables
 ```
 
+| Couple            | Dance       | Song               | Series | Week | Order | Craig | Arlene | Len | Bruno | Alesha | Darcey | Jennifer | Donny | Total |
+| :---------------- | :---------- | :----------------- | -----: | ---: | ----: | ----: | -----: | --: | ----: | -----: | -----: | -------: | ----: | ----: |
+| Natasha & Brendan | Cha cha cha | Chain Of Fools     |      1 |    1 |     1 |     5 |      7 |   8 |     7 |     NA |     NA |       NA |    NA |    27 |
+| Lesley & Anton    | Waltz       | He Was Beautiful   |      1 |    1 |     2 |     6 |      8 |   8 |     7 |     NA |     NA |       NA |    NA |    29 |
+| Chris & Hanna     | Cha cha cha | Lady Marmalade     |      1 |    1 |     3 |     4 |      4 |   7 |     4 |     NA |     NA |       NA |    NA |    19 |
+| Jason & Kylie     | Waltz       | Three Times A Lady |      1 |    1 |     4 |     5 |      5 |   6 |     5 |     NA |     NA |       NA |    NA |    21 |
+| Verona & Paul     | Cha cha cha | R.E.S.P.E.C.T      |      1 |    1 |     5 |     7 |      6 |   7 |     7 |     NA |     NA |       NA |    NA |    27 |
+| Claire & John     | Waltz       | Unchained Melody   |      1 |    1 |     6 |     7 |      7 |   8 |     5 |     NA |     NA |       NA |    NA |    27 |
+
+So you see we get every dance, for every week in every series, and
+individual judges scores as well as the total score.
+
 Let’s start with a little light cleaning. The formatting on the dances
-is a bit inconsistent. Most of it can be fixed by forcing the dance
-names to be a consistent case. I like the look of title case so we’ll
-use stringr’s `str_to_title`.
+is a bit inconsistent. For example we have `Cha cha cha` and `Cha Cha
+Cha`. Most of it can be fixed by forcing the dance names to be a
+consistent case. I like the look of title case so we’ll use stringr’s
+`str_to_title`.
 
 ``` r
 dances <- raw_results %>%
   mutate(Dance = str_to_title(Dance))
 
-head(dances)
+dances %>%
+  select(Dance) %>%
+  head() %>%
+  knitr::kable()
 ```
 
-    ## # A tibble: 6 x 15
-    ##   Couple Dance Song  Series  Week Order Craig Arlene   Len Bruno Alesha
-    ##   <chr>  <chr> <chr>  <int> <int> <int> <int>  <int> <int> <int>  <int>
-    ## 1 Natas~ Cha ~ Chai~      1     1     1     5      7     8     7     NA
-    ## 2 Lesle~ Waltz He W~      1     1     2     6      8     8     7     NA
-    ## 3 Chris~ Cha ~ Lady~      1     1     3     4      4     7     4     NA
-    ## 4 Jason~ Waltz Thre~      1     1     4     5      5     6     5     NA
-    ## 5 Veron~ Cha ~ R.E.~      1     1     5     7      6     7     7     NA
-    ## 6 Clair~ Waltz Unch~      1     1     6     7      7     8     5     NA
-    ## # ... with 4 more variables: Darcey <int>, Jennifer <int>, Donny <int>,
-    ## #   Total <int>
+| Dance       |
+| :---------- |
+| Cha Cha Cha |
+| Waltz       |
+| Cha Cha Cha |
+| Waltz       |
+| Cha Cha Cha |
+| Waltz       |
 
-So you see we get every dance, and individual judges scores as well as
-the total score. My next step would usually be to
+My next step would usually be to
 [gather](https://tidyr.tidyverse.org/reference/gather.html) this into a
 tidy long data frame, maybe
 [separate](https://tidyr.tidyverse.org/reference/separate.html) the
@@ -82,7 +97,7 @@ want the Dance and the Total, so we’ll leave it like it is.
 ## Top Dances
 
 I’d like to know which dances get the best `Total` score. We can do this
-with a `group_by`-`summarise` combination.
+with a `group_by`, `summarise` combination.
 
 ``` r
 dances %>%
