@@ -144,6 +144,5 @@ I'm sorry Quentin. I would fare no better.
 
 Well seeing as I'm wrong, and everyone else is asleep. Let's just pretend this never happened.
 
-## Extras
 
-Download the [code for this blog post on GitHub](https://github.com/mangothecat/blog_strictly). I've setup the repository to run automated builds, [just like you would for a package](https://juliasilge.com/blog/beginners-guide-to-travis/). This way I can track dependencies, and find out quickly if anything breaks.
+[Code for this blog post on GitHub](https://github.com/mangothecat/blog_strictly).
