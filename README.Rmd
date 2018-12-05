@@ -15,7 +15,7 @@ Now as a fully qualified arm-chair critic, I think I've noticed that to get a go
 
 My family disagree, so I've set about to test my hypothesis. The great news is that this is really easy to do with R. In fact, this whole post uses no more R than you'd find in an [introduction to R course](https://www.mango-solutions.com/additional-solutions/r-training). My family can't wait to find out the results. Wherever they went.
 
-For the rest of this post you can relive with me how I tested out my idea and finally put this to rest. Base R has everything we need but we'll get there quicker with the [tidyverse](https://www.tidyverse.org/).
+So let's get started and finally put this to rest. Base R has everything we need but we'll get there quicker with the [tidyverse](https://www.tidyverse.org/). As most of my notebooks now start, let's load the main tidyverse packages.
 
 ```{r libraries}
 library(tidyverse) # I've set message=FALSE everywhere
@@ -35,7 +35,7 @@ head(raw_results) %>%
   knitr::kable() # pretty markdown tables
 ```
 
-So you see we get every dance, for every week in every series, and individual judges scores as well as the total score. 
+We get every dance, for every week in every series, and individual judges scores as well as the total score. 
 
 Let's start with a little light cleaning. The formatting on the dances is a bit inconsistent. For example we have `Cha cha cha` and `Cha Cha Cha`. Most of it can be fixed by forcing the dance names to be a consistent case. I like the look of title case so we'll use stringr's `str_to_title`.
 
@@ -106,7 +106,7 @@ dances %>%
   geom_boxplot()
 ```
 
-Let's do the same again and add average week.
+Let's do the same again and add average week. This will give the mean week in which each dance appears. A bigger number will mean they tend to appear later.
 
 ```{r topdancesweek}
 top_dances_week <- dances %>%
@@ -122,7 +122,7 @@ top_dances_week <- dances %>%
 knitr::kable(head(top_dances_week, 5))
 ```
 
-Rats. My hypothesis is in trouble. My children have long since gone to bed so let's take it up a notch and build a statistical model that can account for `Week` and `Dance` at the same time.
+Rats. My hypothesis is in trouble. The Charleston does indeed have a high `MeanWeek` which means it appears later in the series when the scores are higher. My children have long since gone to bed so let's take it up a notch and build a statistical model that can account for `Week` and `Dance` at the same time.
 
 ## Linear Model
 
