@@ -184,7 +184,9 @@ dances %>%
 
 ![](README_files/figure-gfm/weekplot-1.png)<!-- -->
 
-Let’s do the same again and add average week.
+Let’s do the same again and add average week. This will give the mean
+week in which each dance appears. A bigger number will mean they tend to
+appear later.
 
 ``` r
 top_dances_week <- dances %>%
@@ -208,9 +210,11 @@ knitr::kable(head(top_dances_week, 5))
 | American Smooth |  31.57843 |  7.333333 |   102 |
 | Quickstep       |  30.71538 |  5.823077 |   130 |
 
-Rats. My hypothesis is in trouble. My children have long since gone to
-bed so let’s take it up a notch and build a statistical model that can
-account for `Week` and `Dance` at the same time.
+Rats. My hypothesis is in trouble. The Charleston does indeed have a
+high `MeanWeek` which means it appears later in the series when the
+scores are higher. My children have long since gone to bed so let’s take
+it up a notch and build a statistical model that can account for `Week`
+and `Dance` at the same time.
 
 ## Linear Model
 
