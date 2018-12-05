@@ -3,6 +3,9 @@ Strictly Hypothesis Testing
 Doug Ashton
 25/11/2018
 
+[![Build
+Status](https://travis-ci.org/MangoTheCat/blog_strictly.svg?branch=master)](https://travis-ci.org/MangoTheCat/blog_strictly)
+
 I’ll get straight to it. I love
 [Strictly](https://www.bbc.co.uk/strictly). You may know it by “Dancing
 with the Stars”, “Bailando por un Sueño”, or “Danse avec les stars”. I
