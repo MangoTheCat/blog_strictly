@@ -7,3 +7,8 @@ r:
 
 script:
   - R -e "rmarkdown::render('README.Rmd')"
+  
+branches:
+  only:
+  - master
+  
