@@ -5,7 +5,7 @@ date: "25/11/2018"
 output: github_document
 ---
 
-[![Build Status](https://travis-ci.org/MangoTheCat/blog_strictly.svg?branch=master)](https://travis-ci.org/MangoTheCat/blog_strictly)
+[![Build Status](https://travis-ci.org/MangoTheCat/blog_strictly.svg?branch=master)](https://travis-ci.org/MangoTheCat/blog_strictly) 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=FALSE)
@@ -154,5 +154,6 @@ I'm sorry Quentin. I would fare no better.
 
 Well seeing as I'm wrong, and everyone else is asleep. Let's just pretend this never happened.
 
-
 [Code for this blog post on GitHub](https://github.com/mangothecat/blog_strictly).
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Strictly Hypothesis Testing</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/MangoTheCat/blog_strictly" property="cc:attributionName" rel="cc:attributionURL">Douglas Ashton - Mango Solutions</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
